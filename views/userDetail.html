@@ -1,0 +1,16 @@
+<fieldset>
+    <legend>{{title}}</legend>
+    <div ng-repeat="user in users">
+        <ul ng-if="user.id == pageId" class="spaUserDetail">
+            <li><span>Name :</span> {{user.name}}</li>
+            <li><span>Surname :</span> {{user.surname}}</li>
+            <li><span>Age :</span> {{user.age}} years</li>
+            <li><span>Born :</span> {{user.born}}</li>
+            <li><span>Home phone :</span> {{user.phone.home}}</li>
+            <li><span>Work phone :</span> {{user.phone.work}}</li>
+            <li><span>Home address :</span> {{user.address.home}}</li>
+            <li><span>Work address :</span> {{user.address.work}}</li>
+            <li><span>Note :</span> {{user.note}}</li>
+        </ul>
+    </div>
+</fieldset>
