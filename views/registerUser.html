@@ -1,66 +1,67 @@
-<form ng-submit="saveUser(user) " class="form-horizontal">
+<form class="form-horizontal">
     <fieldset>
         <legend>{{title}}</legend>
         <div class="form-group">
             <label class="col-lg-2 control-label">Name</label>
             <div class="col-lg-10">
-                <input type="text" ng-model="user.Name" class="form-control" placeholder="Name">
+                <input type="text" ng-model="user.name" class="form-control" placeholder="Name">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-2 control-label">Surname</label>
             <div class="col-lg-10">
-                <input type="text" ng-model="user.Surname" class="form-control" placeholder="Surname">
+                <input type="text" ng-model="user.surname" class="form-control" placeholder="Surname">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-2 control-label">Age</label>
             <div class="col-lg-10">
-                <input type="text" ng-model="user.Age" class="form-control" placeholder="Age">
+                <input type="text" ng-model="user.age" class="form-control" placeholder="Age">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-2 control-label">Born</label>
             <div class="col-lg-10">
-                <input type="text" ng-model="user.Born" class="form-control" placeholder="Born">
+                <input type="text" ng-model="user.born" class="form-control" placeholder="Born">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-lg-2 control-label">User address home</label>
             <div class="col-lg-10">
-                <input type="text" ng-model="user.AddressHome" class="form-control" placeholder="User address home">
+                <input type="text" ng-model="user.address.home" class="form-control" placeholder="User address home">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-2 control-label">User address work</label>
             <div class="col-lg-10">
-                <input type="text" ng-model="user.AddressWork" class="form-control" placeholder="User address work">
+                <input type="text" ng-model="user.address.work" class="form-control" placeholder="User address work">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-lg-2 control-label">User phone home</label>
             <div class="col-lg-10">
-                <input type="text" ng-model="user.PhoneHome" class="form-control" placeholder="User phone home">
+                <input type="text" ng-model="user.phone.home" class="form-control" placeholder="User phone home">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-2 control-label">User phone work</label>
             <div class="col-lg-10">
-                <input type="text" ng-model="user.PhoneWork" class="form-control" placeholder="User phone work">
+                <input type="text" ng-model="user.phone.work" class="form-control" placeholder="User phone work">
             </div>
         </div>
 
         <div class="form-group">
             <label for="textArea" class="col-lg-2 control-label">Note</label>
             <div class="col-lg-10">
-                <textarea class="form-control" ng-model="user.Note" rows="3" id="textArea"></textarea>
+                <textarea class="form-control" ng-model="user.note" rows="3" id="textArea"></textarea>
             </div>
         </div>
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" ng-if="!editing" ng-click="saveUser(user)" class="btn btn-primary">Save</button>
+                <button type="submit" ng-if="editing"  ng-click="editUser(user)" class="btn btn-primary">Edit</button>
                 <button type="reset" class="btn btn-default">Reset</button>
             </div>
         </div>

@@ -1,20 +1,29 @@
 {
-  "name": "task",
+  "name": "listbook",
   "version": "1.0.0",
-  "description": "Spa App",
+  "description": "Angular user list",
   "main": "index.js",
   "scripts": {
     "lite": "lite-server"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NexThemes/Listbook.git"
+  },
   "keywords": [
-    "spa",
-    "app",
-    "angular"
+    "listbook",
+    "angular",
+    "users"
   ],
-  "author": "Scarevnea V",
+  "author": "Scarevnea V.",
   "license": "ISC",
-  "devDependencies": {
+  "bugs": {
+    "url": "https://github.com/NexThemes/Listbook/issues"
+  },
+  "homepage": "https://github.com/NexThemes/Listbook#readme",
+  "dependencies": {
     "angular": "^1.6.1",
+    "angular-route": "^1.6.2",
     "lite-server": "^2.2.2"
   }
 }

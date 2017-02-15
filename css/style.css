@@ -39,8 +39,22 @@ body {
     background-color: #f9f9f9;
 }
 /* Sidebar styles */
+#spaSidebar .user-options a {
+  color: #999;
+  margin: 0 5px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 0;
+}
+#spaSidebar .user-options a:hover {
+  color: green;
+  border: 0;
+}
+#spaSidebar .user-options a:hover .fa-trash {
+  color: red;
+}
 #spaSidebar table {
-    max-width: 300px;
+    max-width: 340px;
     border: 6px solid #e7e7e7;
     margin-left: 20px;
 }
@@ -87,11 +101,11 @@ body {
     content: "\f106";
 }
 #spaSidebar .storage-title {
-    margin: 0 20px;
+    margin: 0 -20px 0 20px;
     border: 6px solid #e7e7e7;
     border-bottom:0;
     padding: 10px;
-    max-width: 300px;
+    max-width: 340px;
     font-weight: 400;
     text-align: center;
 }
