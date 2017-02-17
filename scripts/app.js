@@ -6,17 +6,57 @@ app.factory("jsonFactory", function($http) {
   function getData() {
     return $http({method:'GET',url:'database/AgendaDataSource.json'});
   }
-  return {
-    getData: getData
+  function getDataAll(users) {
+    var users = $http({method:'GET',url:'database/AgendaDataSource.json'}).then(function(response){
+        return response.data;
+    })
+    return users;
   }
+  function updateUser(user) {
+    getData().then(function(response){
+        var users = response.data;
+        users.splice(user, 1);
+        users.push(user);
+    });
+  }
+  return {
+    getData: getData,
+    updateUser : updateUser,
+    getDataAll : getDataAll
+  }
+});
+
+// Edit user controller
+app.controller("editUserCtrlScope", function($scope, $rootScope, $location, $routeParams, jsonFactory) {
+    $scope.title = "Edit User";
+    $scope.pageId = $routeParams.id;
+    $scope.editing = true;
+    jsonFactory.getData().then(function(response){
+      var users = response.data;
+      for(user in users) {
+        if(users[user].id == $routeParams.id) {
+          $scope.user = users[user];
+        }
+      }
+      $scope.editUser = function(user) {
+        jsonFactory.updateUser(user);
+        $rootScope.$broadcast('updatedUsers', users);
+        $location.path('/');
+      }
+    });
 });
 
 // User Details controller
 app.controller("spaUserDetailsCtrl", function($scope, $routeParams, jsonFactory) {
     // getting data from JSON file
-    jsonFactory.getData().then(function(response){
-        $scope.users = response.data;
-    });
+    // jsonFactory.getData().then(function(response){
+    //     $scope.users = response.data;
+    // });
+    var users = jsonFactory.getDataAll(users).then;
+
+    for(user in users) {
+      console.log(users[user])
+    }
     $scope.title = "User Details";
     $scope.pageId = $routeParams.id;
 });
@@ -34,16 +74,10 @@ app.controller("spaJSONCtrl", function($scope, jsonFactory) {
         }
       }
       $scope.users = users;
+      $scope.$on('updatedUsers', function(event, data) {
+        $scope.users = data;
+      });
     });
-
-    $scope.delete = function(id) {
-      for(user in users) {
-        if(users[user].id == id) {
-          users.splice(user, 1);
-          localStorage.setItem('users', angular.toJson(users));
-        }
-      }
-    }
 
     // sort by column
     $scope.sortColumn = "name";

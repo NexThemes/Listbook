@@ -20,6 +20,10 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl : "views/registerUser.html",
             controller : "editUserCtrl"
         })
+        .when("/edits/:id", {
+            templateUrl : "views/registerUser.html",
+            controller : "editUserCtrlScope"
+        })
         .otherwise({
             redirectTo: "/"
         });
